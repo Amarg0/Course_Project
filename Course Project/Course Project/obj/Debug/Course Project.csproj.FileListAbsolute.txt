@@ -1,0 +1,9 @@
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\bin\Debug\Course Project.exe.config
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\bin\Debug\Course Project.exe
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\bin\Debug\Course Project.pdb
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course Project.csprojResolveAssemblyReference.cache
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course_Project.Form1.resources
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course_Project.Properties.Resources.resources
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course Project.csproj.GenerateResource.Cache
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course Project.exe
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\Course Project\obj\Debug\Course Project.pdb

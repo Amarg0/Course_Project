@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Course_Project
@@ -15,6 +9,17 @@ namespace Course_Project
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(Parser.GetAnalysisResult));
+            thread.Start(new ArgsForAnalysisThread(progressBar1,richTextBox1));
+        }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = null;
         }
     }
 }

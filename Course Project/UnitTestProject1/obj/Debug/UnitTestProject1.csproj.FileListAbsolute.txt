@@ -1,0 +1,10 @@
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\Course Project.exe
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\EasyAssertions.dll
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\SmartFormat.dll
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\Course Project.pdb
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\bin\Debug\EasyAssertions.xml
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

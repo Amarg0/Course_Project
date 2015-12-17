@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Course_Project.Properties
-{
-
-
+namespace Course_Project.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,118 @@ namespace Course_Project.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Course_Project.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to без
+        ///безо
+        ///благодаря
+        ///близ
+        ///в
+        ///вблизи
+        ///ввиду
+        ///вглубь
+        ///вдогон
+        ///вдоль
+        ///взамен
+        ///включая
+        ///вкруг
+        ///вместо
+        ///вне
+        ///внизу
+        ///внутри
+        ///внутрь
+        ///во
+        ///возле
+        ///вокруг
+        ///вопреки
+        ///вослед
+        ///впереди
+        ///вплоть
+        ///впредь
+        ///вразрез
+        ///вроде
+        ///вслед
+        ///вследствие
+        ///для
+        ///до
+        ///за
+        ///заместо
+        ///из
+        ///изнутри
+        ///изо
+        ///исключая
+        ///к
+        ///касательно
+        ///ко
+        ///кроме
+        ///кругом
+        ///меж
+        ///между
+        ///мимо
+        ///на
+        ///наверху
+        ///навстречу
+        ///над
+        ///надо
+        ///назад
+        ///накануне
+        ///наместо
+        ///наперекор
+        ///наперерез
+        ///наподобие
+        ///напротив
+        ///наряду
+        ///насупротив
+        ///насчет
+        ///невзирая
+        ///недалеко
+        ///несмотря
+        ///ниже
+        ///о
+        ///об
+        ///обо
+        ///обок        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NotEmotionalWords {
+            get {
+                return ResourceManager.GetString("NotEmotionalWords", resourceCulture);
             }
         }
     }
