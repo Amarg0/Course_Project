@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -16,7 +17,7 @@ namespace Course_Project
         public static WordsCollection WordsCollection =
             XML_loader.DeserializeCollection(WordsCollection, @"C:\Users\Amargo\Documents\GitHub\Course_Project\Course Project\WordsList1.xml");
         public static char[] separators = {
-                ' ', '\t', '\n', '\r', '/', '-', '.', '?', '!', ')',
+                ' ', '\t', '\n', '\r', '/',  '.', '?', '!', ')',
                 '(', ',', ':', ';'
             };
         public static ArgsForTransact GetWordsFromText(Object parserArgsObj)
@@ -31,7 +32,7 @@ namespace Course_Project
             int numberOfLines = noPunctuationStrings.Length;
             for (int i = 0; i < numberOfLines; i++)
             {
-                progressBar.Value = (i + 1) * 100 / numberOfLines;
+                //progressBar.Value = (i + 1) * 100 / numberOfLines;
                 if (NotEmotionalWords.CheckWordForEmotional(noPunctuationStrings[i]))
                     wordsList.Add(noPunctuationStrings[i]);
             }
@@ -41,7 +42,6 @@ namespace Course_Project
 
         public static void GetWordsChances(Object argsForTransact)
         {
-            ThreadPool.SetMaxThreads(1,1);
             ArgsForTransact args = (ArgsForTransact) argsForTransact;
             RichTextBox richTextBox = args.RichTextBox;
             List<string> wordsList = args.WordsList;
@@ -49,22 +49,17 @@ namespace Course_Project
             decimal negativeSum = new decimal();
             List<Thread> colorThreads = new List<Thread>();
             foreach (string word in wordsList)
-            {
+            {   
                 foreach (WordInfo wordInfo in WordsCollection.WordInfos)
                 {
                     if (Stemmer.Stem(word) == wordInfo.Word)
                     {
-                        //ColorWord(new ArgsForColor(wordInfo, richTextBox, word));
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(ColorWord),
-                            new ArgsForColor(wordInfo, richTextBox, word));
-                        
                         positiveSum += wordInfo.GoodChance;
                         negativeSum += wordInfo.BadChance;
                         break;
                     }
                 }
             }
-            Thread.Sleep(1000);
             MessageBox.Show("Postive - " + positiveSum + "\nNegative - " + negativeSum);
         }
 
@@ -84,39 +79,6 @@ namespace Course_Project
             text = Regex.Replace(text, (char) 171 + "{1,}" + (char) 187, "");
             return text;
         }
-
-        public static void ColorWord(Object argsForColor)
-        {
-            ArgsForColor args = (ArgsForColor) argsForColor;
-            WordInfo wordInfo = args.WordInfo;
-            RichTextBox richTextBox = args.RichTextBox;
-            String word = args.Word;
-            int index = 0;
-            while ((index = richTextBox.Text.IndexOf(word, index)) != -1)
-            {
-                if (wordInfo.GoodChance > wordInfo.BadChance)
-                {
-                        richTextBox.Select(index, word.Length);
-                        richTextBox.SelectionBackColor = Color.Green;
-                        index += word.Length;
-                }
-                else
-                {
-                    if (wordInfo.GoodChance < wordInfo.BadChance)
-                    {
-                            richTextBox.Select(index, word.Length);
-                            richTextBox.SelectionBackColor = Color.Red;
-                            index += word.Length;
-                    }
-                    else
-                    {
-                            richTextBox.Select(index, word.Length);
-                            richTextBox.SelectionBackColor = Color.Gray;
-                            index += word.Length;
-                    }
-                }
-            }
-        }
     }
 
     //Аргументы для запуска потока
@@ -128,7 +90,14 @@ namespace Course_Project
 
         public ArgsForAnalysisThread(ProgressBar progressBar, RichTextBox richTextBox)
         {
-            Text = richTextBox.Text;
+            if (richTextBox.InvokeRequired)
+            {
+                richTextBox.Invoke((MethodInvoker) delegate() { Text = richTextBox.Text; });
+            }
+            else
+            {
+                Text = richTextBox.Text;
+            }
             ProgressBar = progressBar;
             RichTextBox = richTextBox;
         }
@@ -140,26 +109,18 @@ namespace Course_Project
         public string Text { get; set; }
         public RichTextBox RichTextBox { get; set; }
         public List<string> WordsList { get; set; }
-
         public ArgsForTransact(RichTextBox richTextBox, List<string> wordsList)
         {
-            Text = richTextBox.Text;
+            if (richTextBox.InvokeRequired)
+            {
+                richTextBox.Invoke((MethodInvoker)delegate() { Text = richTextBox.Text; });
+            }
+            else
+            {
+                Text = richTextBox.Text;
+            }
             RichTextBox = richTextBox;
             WordsList = wordsList;
-        }
-    }
-
-    public class ArgsForColor
-    {
-        public WordInfo WordInfo { get; set; }
-        public RichTextBox RichTextBox { get; set; }
-        public String Word { get; set; }
-
-        public ArgsForColor(WordInfo wordInfo, RichTextBox richTextBox, string word)
-        {
-            WordInfo = wordInfo;
-            RichTextBox = richTextBox;
-            Word = word;
         }
     }
 }

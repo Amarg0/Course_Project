@@ -1,0 +1,66 @@
+public static void ColorWords(Object argsForColor)
+        {
+            ArgsForColor args = (ArgsForColor) argsForColor;
+            WordInfo wordInfo = args.WordInfo;
+            RichTextBox richTextBox = args.RichTextBox;
+            String word = args.Word;
+            int index = 0;
+            richTextBox.Invoke((MethodInvoker) delegate() { index = richTextBox.Text.IndexOf(word, index); });
+            while (index!=-1)
+            {
+                if (wordInfo.GoodChance > wordInfo.BadChance)
+                {
+                    if (richTextBox.InvokeRequired)
+                    {
+                        richTextBox.Invoke((MethodInvoker) (delegate() { richTextBox.Select(index, word.Length); }));
+                        richTextBox.Invoke((MethodInvoker) (delegate() { richTextBox.SelectionColor = Color.Green; }));
+                    }
+                    else
+                    {
+                        richTextBox.Select(index, word.Length);
+                        richTextBox.SelectionBackColor = Color.Green;
+                    }
+                        index += word.Length;
+                        richTextBox.Invoke((MethodInvoker)delegate() { index = richTextBox.Text.IndexOf(word, index); });
+                }
+                else
+                {
+                    if (wordInfo.GoodChance < wordInfo.BadChance)
+                    {
+                        if (richTextBox.InvokeRequired)
+                        {
+                            richTextBox.Invoke((MethodInvoker)(delegate() { richTextBox.Select(index, word.Length); }));
+                            richTextBox.Invoke((MethodInvoker)(delegate() { richTextBox.SelectionColor = Color.Red; }));
+                        }
+                        else
+                        {
+                            richTextBox.Select(index, word.Length);
+                            richTextBox.SelectionBackColor = Color.Red;
+                        }
+                            index += word.Length;
+                            richTextBox.Invoke((MethodInvoker)delegate() { index = richTextBox.Text.IndexOf(word, index); });
+                    }
+                    //else
+                    //{
+                    //        richTextBox.Select(index, word.Length);
+                    //        richTextBox.SelectionBackColor = Color.Gray;
+                    //        index += word.Length;
+                    //}
+                }
+            }
+
+            richTextBox.Invoke((MethodInvoker)delegate() { richTextBox.Enabled = true; });
+        }
+    public class ArgsForColor
+    {
+        public WordInfo WordInfo { get; set; }
+        public RichTextBox RichTextBox { get; set; }
+        public String Word { get; set; }
+
+        public ArgsForColor(WordInfo wordInfo, RichTextBox richTextBox, string word)
+        {
+            WordInfo = wordInfo;
+            RichTextBox = richTextBox;
+            Word = word;
+        }
+    }

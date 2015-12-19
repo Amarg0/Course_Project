@@ -13,6 +13,7 @@ namespace Course_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox1.Enabled = false;
             Thread thread = new Thread(new ParameterizedThreadStart(Parser.GetAnalysisResult));
             thread.Start(new ArgsForAnalysisThread(progressBar1,richTextBox1));
         }
